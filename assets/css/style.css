@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
+:root {
+  --primary-color: rgb(17, 86, 102);
+  --primary-color-darker: rgb(9, 48, 56);
+}
+
+* {
+  box-sizing: border-box;
+  outline: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--primary-color);
+  font-family: 'Open sans', sans-serif;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 1.5em;
+}
+
+h1 {
+  font-size: 2.2rem;
+  line-height: 1.5em;
+}
+
+label {
+  font-size: 1.6em;
+  line-height: 1.5em;
+}
+
+.container {
+  max-width: 600px;
+  margin: 5rem auto;
+  background: #fff;
+  padding: 3rem;
+  border-radius: 10px;
+}
+
+form input, form label, form button {
+  display: block;
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #000;
+}
+
+form input {
+  font-size: 2.4rem;
+  height: 5rem;
+  padding: 0 2rem;
+  color: #000;
+}
+
+form input:focus {
+  outline: 0.1rem solid rgb(35, 136, 158);
+}
+
+form button {
+  border: none;
+  background: var(--primary-color);
+  color: #fff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  height: 5rem;
+  cursor: pointer;
+  margin-top: 3rem;
+}
+
+form button:hover {
+  background: var(--primary-color-darker);
+}
+
+.form-content {
+  max-width: 30rem;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2rem;
+  border-radius: 2rem;
+}
+
+form .form {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 5rem;
+}
+
+.content-imc {
+  display: flex;
+  justify-content: space-between ;
+}
+
+.content-imc H1{
+  margin-bottom: 1rem ;
+}
+
+.content-grau-obesidade {
+  margin-right: 3rem;
+}
+
+.content-grau-obesidade {
+  float: right;
+}
+
+.content-peso,
+.content-grau-obesidade {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.content-peso p,
+.content-grau-obesidade p{
+  padding-top: 1rem;
+}
+
+
+.resultado {
+  width: 100%;
+  font-size: 2.3rem;
+  padding: 1.6rem;
+  color: #fff;
+  text-align: center;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+.h1 {
+  margin: 1rem 0 2.5rem 0;
+}
+
+@media (max-width: 415px) {
+  .content-imc {
+    flex-direction: column;
+  }
+}
