@@ -22,25 +22,27 @@ body {
 }
 
 p {
-  font-size: 1.6rem;
+  font-size: 2.3rem;
   line-height: 1.5em;
 }
 
 h1 {
-  font-size: 2.2rem;
+  font-size: 2.7rem;
   line-height: 1.5em;
 }
 
 label {
-  font-size: 1.6em;
+  font-size: 2.3rem;
   line-height: 1.5em;
 }
 
 .container {
-  max-width: 600px;
+  
+  max-width: 640px;
+  min-width: 360px;
   margin: 5rem auto;
   background: #fff;
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 10px;
 }
 
@@ -66,7 +68,7 @@ form button {
   border: none;
   background: var(--primary-color);
   color: #fff;
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: 700;
   height: 5rem;
   cursor: pointer;
@@ -92,15 +94,14 @@ form .form {
 
 .content-imc {
   display: flex;
-  justify-content: space-between ;
 }
 
 .content-imc H1{
   margin-bottom: 1rem ;
 }
 
-.content-grau-obesidade {
-  margin-right: 3rem;
+.content-peso {
+  margin-right: 15rem;
 }
 
 .content-grau-obesidade {
@@ -119,13 +120,6 @@ form .form {
 }
 
 
-.resultado {
-  width: 100%;
-  font-size: 2.3rem;
-  padding: 1.6rem;
-  color: #fff;
-  text-align: center;
-}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -136,7 +130,25 @@ input::-webkit-inner-spin-button {
   margin: 1rem 0 2.5rem 0;
 }
 
-@media (max-width: 415px) {
+.resultado-ok {
+  background: rgb(53, 132, 168);
+  width: 100%;
+  font-size: 2.3rem;
+  padding: 1.5rem;
+  color: #fff;
+  text-align: center;
+}
+
+.resultado-bad {
+  background: rgb(231, 74, 74);
+  width: 100%;
+  font-size: 2.3rem;
+  padding: 1.5rem;
+  color: #fff;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
   .content-imc {
     flex-direction: column;
   }

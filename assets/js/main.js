@@ -1,116 +1,71 @@
-(function meuEscopo() {
-  const form = document.querySelector(".form");
+(function meuEscopo(){
 
-  function Imc(peso, altura) {
-    return { peso, altura };
+  const form = document.querySelector('.form');
+
+  form.addEventListener('submit', (e) => {
+    
+    e.preventDefault();
+    const inputPeso = e.target.querySelector('.input-peso');
+    const inputAltura = e.target.querySelector('.input-altura');
+
+    const peso = Number(inputPeso.value);
+    const altura = Number(inputAltura.value);
+
+    if (peso === 0 && altura === 0) {
+      setResultado('IMC inválido', false)
+      return;
+    }
+
+    if (peso === 0) {
+      setResultado('Peso inválido', false);
+      return;
+    }
+
+    if (altura === 0) {
+      setResultado('Altura inválida', false);
+      return;
+    }
+
+    const imc = getImc(peso, altura);
+    const nivelImc = getNivel(imc);
+
+    const msg = `Seu IMC é ${imc} (${nivelImc})`
+
+    setResultado(msg, true);
+    
+  });
+
+  function getNivel(imc) {
+    const nivel = ['Abaixo do peso', 'Peso normal', 'Sobrepeso', 'Obesidade grau 1',
+    'Obesidade grau 2', 'Obesidade grau 3'];
+
+    if (imc >= 39.9) return nivel[5];
+    if (imc >= 34.9) return nivel[4]
+    if (imc >= 29.9) return nivel[3]
+    if (imc >= 24.9) return nivel[2]
+    if (imc >= 18.5) return nivel[1]
+    if (imc < 18.5) return nivel[0]
   }
 
-  function eventoForm(evt) {
-    evt.preventDefault();
-
-    const peso = document.querySelector(".input-peso");
-    const altura = document.querySelector(".input-altura");
-    const resultado = document.querySelector(".resultado");
-
-    const imc = Imc(peso.value, altura.value);
-
-    const resultadoImc = imc.peso / Math.pow(imc.altura, 2);
-
-    console.log(resultadoImc.toFixed(1));
-
-    if (isNaN(resultadoImc)) {
-      resultado.innerHTML = `
-      <style>
-          .resultado {
-              background: #ff4d4d;
-          }
-      </style>
-
-      <p>Peso inválido</p>
-      `;
-    } else if (imc.altura == '') {
-      resultado.innerHTML = `
-      <style>
-          .resultado {
-              background: #ff4d4d;
-          }
-      </style>
-
-      <p>Altura inválida</p>
-      `;
-    } else if (imc.peso == '') {
-      resultado.innerHTML = `
-      <style>
-          .resultado {
-              background: #ff4d4d;
-          }
-      </style>
-
-      <p>Peso inválido</p>
-      `;
-    }
-    else if (resultadoImc < 18.5) {
-      resultado.innerHTML = `
-        <style>
-            .resultado {
-                background: #4d94ff;
-            }
-        </style>
-
-        <p>Seu IMC é ${resultadoImc.toFixed(1)} (Abaixo do peso)</p>
-        `;
-    } else if (resultadoImc >= 18.5 && resultadoImc <= 24.9) {
-      resultado.innerHTML = `
-      <style>
-          .resultado {
-              background: #4d94ff;
-          }
-      </style>
-
-      <p>Seu IMC é ${resultadoImc.toFixed(1)} (Peso normal)</p>
-      `;
-    } else if (resultadoImc >= 25 && resultadoImc <= 29.9) {
-      resultado.innerHTML = `
-      <style>
-          .resultado {
-              background: #4d94ff;
-          }
-      </style>
-
-      <p>Seu IMC é ${resultadoImc.toFixed(1)} (Sobrepeso)</p>
-      `;
-    } else if (resultadoImc >= 30 && resultadoImc <= 34.9) {
-      resultado.innerHTML = `
-      <style>
-          .resultado {
-              background: #4d94ff;
-          }
-      </style>
-
-      <p>Seu IMC é ${resultadoImc.toFixed(1)} (Obesidade grau 1)</p>
-      `;
-    } else if (resultadoImc >= 35 && resultadoImc <= 39.9) {
-      resultado.innerHTML = `
-      <style>
-          .resultado {
-              background: #4d94ff;
-          }
-      </style>
-
-      <p>Seu IMC é ${resultadoImc.toFixed(1)} (Obesidade grau 3)</p>
-      `;
-    } else if (resultadoImc > 40) {
-      resultado.innerHTML = `
-      <style>
-          .resultado {
-              background: #4d94ff;
-          }
-      </style>
-
-      <p>Seu IMC é ${resultadoImc.toFixed(1)} (Obesidade grau 3)</p>
-      `;
-    }
+  function criaP() {
+    const p = document.createElement('p');
+    return p;
   }
 
-  form.addEventListener("submit", eventoForm);
+  function setResultado (msg, isValid) {
+    const resultado = document.querySelector('.resultado');
+    resultado.innerHTML = '';
+    const p = criaP();
+
+    (isValid) ? p.classList.add('resultado-ok') : p.classList.add('resultado-bad');
+
+    p.innerHTML = msg;
+    resultado.appendChild(p);
+  };
+
+  function getImc (peso, altura) {
+    const imc = peso / altura ** 2;
+    return imc.toFixed(1);
+  }
+
 })();
